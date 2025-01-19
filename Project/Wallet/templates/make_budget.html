@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Web Application</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <div class="head">
+        <div class="profile">
+            
+            
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'budget' %} ">Budget</a></li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content_left"></div>
+        <div class="content_center">
+            <div class="content_center_top">
+                <h1>Wallet form Budget</h1>
+            </div>
+
+            <div class="content_form">
+                <form id="dynamicForm" method="POST" action="{% url 'save' %}">
+                    {% csrf_token %}
+                    <div id="inputContainer">
+                        <div class="time">
+                            <p>Select time of Budget:</p>
+                            <select name="time_period" class="select">
+                                <option value="day" name="select">Day</option>
+                                <option value="week" name="select">Week</option>
+                                <option value="year" name="select">Year</option>
+                            </select>
+                        </div>
+                       
+                        <div class="input_money">
+                            <p>Money Used:</p>
+                            <input type="text" name="money_used" placeholder="Enter amount">
+                        </div>
+                        
+                        <!-- Initial Input Field -->
+                        <div class="input_account">
+                            <p>Enter Account Used:</p>
+                            <div class="input-group">
+                                <input type="text" name="account_names[]" placeholder="Enter your name">
+                                <button type="button" id="addButton">Add New Input</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content_button">
+                        <button type="submit">Save Budget</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content_right"></div>
+    </div>
+
+    <script>
+        const addButton = document.getElementById('addButton');
+        const inputContainer = document.getElementById('inputContainer');
+        let inputCount = 1;
+
+        addButton.addEventListener('click', function() {
+            inputCount++;
+            const newInputGroup = document.createElement('div');
+            newInputGroup.classList.add('input-group');
+            newInputGroup.innerHTML = `
+                <input type="text" name="account_names[]" placeholder="Enter value for input ${inputCount}">
+            `;
+            inputContainer.appendChild(newInputGroup);
+        });
+    </script>
+</body>
+</html>

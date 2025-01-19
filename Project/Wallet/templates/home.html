@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class="head">
+        <div class="profile">
+            
+            </div>
+        </div>
+
+        
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'check' %}">Make Budget</a></li>
+               
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content_left"></div>
+        <div class="content_center">
+            <div class="content_center_top">
+                <h1>Wallet Web Application</h1>
+            </div>
+            <div class="content_image"></div>
+            <div class="content_name"><h1>Name: Eric</div>
+            
+            <div class="content_button">
+                <div class="Budget"><a href="{% url 'check'%}"><button>Make Budget</button></a></div>
+                
+            </div>
+        </div>
+        <div class="content_right"></div>
+    </div>
+</body>
+</html>

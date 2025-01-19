@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wallet Web Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
+    <div class="head">
+        <div class="profile">
+            
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'outcome' %}">withdraw</a></li>
+                <li><a href="{% url 'income'%}">deposit</a></li>
+                <li><a href="{% url 'report' %}">Report</a></li>
+                <li><a href="{% url 'chart'%}">Chart View</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="content_left">
+            <img src="{% static 'image/pic1.svg' %}" alt="image">
+      
+        </div>
+        <div class="content_center">
+            <div class="content_center_top">
+                <h1>Wallet Balance</h1>
+                <ul>
+                    <li> <a href="{% url 'highi' %}">income</a></li>
+                    <li> <a href="{% url 'chart' %}">saved money</a></li>
+                    <li> <a href="{% url 'higho' %}">expences</a></li>
+                </ul>
+            </div>
+            <canvas id="myChart" style="width: 1221px; height: 480px"></canvas>
+           
+        </div>
+        <div class="content_right">
+            <img src="{% static 'image/pic3.svg' %}" alt="image">
+        </div>
+    </div>
+
+    <script>
+        var xValues = [];
+        var yValues = [];
+        var barColors = ["red", "green", "blue", "orange", "brown"];
+    
+        {% for accounts in account %}
+            xValues.push("{{ accounts.account_name }}");
+            yValues.push("{{ accounts.money_total }}");
+        {% endfor %}
+    
+        new Chart("myChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: "Money total each account "
+                }
+            }
+        });
+    </script>
+
+        
+</body>
+</html>
