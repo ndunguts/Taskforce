@@ -213,5 +213,5 @@ def deletebudget(request):
     Budget.objects.all().delete()
     return redirect('budget')
     
-#GRANT ALL PRIVILEGES ON taskfo.* TO 'giteg'@'localhost';
+#GRANT ALL PRIVILEGES ON wallet.* TO 'giteg'@'localhost';
 # CREATE USER 'giteg'@'localhost' IDENTIFIED BY '1234';
