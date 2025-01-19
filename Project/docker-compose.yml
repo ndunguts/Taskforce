@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: wallet
-      MYSQL_USER: root
+      MYSQL_USER: giteg
       MYSQL_PASSWORD: 1234
     ports:
       - "3306:3306"

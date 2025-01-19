@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # MySQL backend
         'NAME': 'wallet',  # Your database name
-        'USER': 'root',  # Your MySQL username
+        'USER': 'giteg',  # Your MySQL username
         'PASSWORD': '1234',  # Your MySQL password
         'HOST': 'localhost',  # Hostname where the MySQL server is running
         'PORT': '3306',  # Default MySQL port
